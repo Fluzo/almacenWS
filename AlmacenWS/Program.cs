@@ -1,3 +1,8 @@
+using AlmacenWS.BaseDatos;
+using AlmacenWS.Articulos.Servicios;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,6 +10,18 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
+// Base de datos
+//builder.Services.AddDbContext<AlmacenContext>(options => {
+//    options.UseSqlServer("data source=DESKTOP-CCF2V8K\\SQLEXPRESS;initial catalog=ALMACEN;user id=sa;password=Solid0231.");
+//});
+
+builder.Services.AddDbContext<AlmacenContext>(options => {
+    options.UseSqlServer("data source=DESKTOP-KHBQIV3\\SQLEXPRESS;initial catalog=ALMACEN;user id=sa;password=1234.");
+});
+
+builder.Services.AddScoped<IArticulosService, ArticulosService>();
+
 builder.Services.AddSwaggerGen(c =>
 {
     c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
