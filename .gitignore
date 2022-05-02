@@ -43,5 +43,9 @@ Thumbs.db
 
 /AlmacenWS/bin
 /AlmacenWS/obj
+/AlmacenWS/bin/*
+/AlmacenWS/obj/*
 bin
 obj
+bin/*
+obj/*
