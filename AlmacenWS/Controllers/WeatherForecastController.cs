@@ -29,5 +29,11 @@ namespace AlmacenWS.Controllers
             })
             .ToArray();
         }
+
+        [HttpGet(Name = "HolaMundo")]
+        public ActionResult<string> HolaMundo()
+        {
+            return Ok("Hola");
+        }
     }
 }
