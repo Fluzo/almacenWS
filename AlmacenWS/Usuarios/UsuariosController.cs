@@ -34,5 +34,29 @@ namespace AlmacenWS.Usuarios
             var result = await _service.AltaUsuario(dto);
             return Ok(result);
         }
+
+
+        [HttpPost]
+        [Route("EditarUsuario")]
+        public async Task<IActionResult> EditarUsuario(UsuarioDTO dto)
+        {
+            var result = await _service.EditarUsuario(dto);
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("DameUsuarios")]
+        public async Task<IActionResult> DameUsuarios(string? usuario, string? email, Nullable<int> idPerfil, Nullable<bool> activo)
+        {
+            FiltroUsuariosDTO filtro = new FiltroUsuariosDTO()
+            {
+                Usuario = usuario,
+                Email = email,
+                IdPerfil = idPerfil,
+                Activo = activo
+            };
+            var result = _service.DameUsuarios(filtro);
+            return Ok(result);
+        }
     }
 }

@@ -6,6 +6,7 @@ namespace AlmacenWS.BaseDatos
     {
         public DbSet<ARTICULOS> Articulos { get; set; }
         public DbSet<V_STOCK_ARTICULOS> V_STOCK_ARTICULOS { get; set; }
+        public DbSet<V_USUARIOS> V_USUARIOS { get; set; }
         public AlmacenContext(DbContextOptions<AlmacenContext> options) : base(options)
         {
             
@@ -36,6 +37,14 @@ namespace AlmacenWS.BaseDatos
 
                 // Definición de índice
                 entity.HasNoKey();
+
+            });
+
+            modelBuilder.Entity<V_USUARIOS>(entity =>
+            {
+
+                // Definición de índice
+                entity.HasKey(e => e.ID_USUARIO);
 
             });
         }
