@@ -1,5 +1,7 @@
 ﻿using AlmacenWS.Articulos.DTO;
 using AlmacenWS.BaseDatos;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer;
 
 namespace AlmacenWS.Articulos.Servicios
 {
@@ -23,6 +25,7 @@ namespace AlmacenWS.Articulos.Servicios
         public ArticulosService (AlmacenContext ctx)
         {
             this._ctx = ctx;
+            
         }
 
         public List<V_STOCK_ARTICULOS> ObtenerStockArticulos(FiltroStockArticulos filtros)

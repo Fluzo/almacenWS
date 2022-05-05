@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <Folder Include="Articulos\Servicios\Modelos\" />
+    <Folder Include="Usuarios\Servicios\Modelos\" />
   </ItemGroup>
 
 </Project>

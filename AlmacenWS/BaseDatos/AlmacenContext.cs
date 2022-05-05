@@ -8,7 +8,7 @@ namespace AlmacenWS.BaseDatos
         public DbSet<V_STOCK_ARTICULOS> V_STOCK_ARTICULOS { get; set; }
         public AlmacenContext(DbContextOptions<AlmacenContext> options) : base(options)
         {
-
+            
         }
 
 
@@ -39,5 +39,7 @@ namespace AlmacenWS.BaseDatos
 
             });
         }
+
+
     }
 }

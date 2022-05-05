@@ -1,5 +1,6 @@
 using AlmacenWS.BaseDatos;
 using AlmacenWS.Articulos.Servicios;
+using AlmacenWS.Usuarios.Servicios;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 
@@ -12,15 +13,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
 // Base de datos
-//builder.Services.AddDbContext<AlmacenContext>(options => {
-//    options.UseSqlServer("data source=DESKTOP-CCF2V8K\\SQLEXPRESS;initial catalog=ALMACEN;user id=sa;password=Solid0231.");
-//});
-
-builder.Services.AddDbContext<AlmacenContext>(options => {
-    options.UseSqlServer("data source=DESKTOP-KHBQIV3\\SQLEXPRESS;initial catalog=ALMACEN;user id=sa;password=1234.");
+builder.Services.AddDbContext<AlmacenContext>(options =>
+{
+    options.UseSqlServer("data source=DESKTOP-CCF2V8K\\SQLEXPRESS;initial catalog=ALMACEN;user id=sa;password=Solid0231.");
 });
 
+//builder.Services.AddDbContext<AlmacenContext>(options => {
+//    options.UseSqlServer("data source=DESKTOP-KHBQIV3\\SQLEXPRESS;initial catalog=ALMACEN;user id=sa;password=1234.");
+//});
+
 builder.Services.AddScoped<IArticulosService, ArticulosService>();
+builder.Services.AddScoped<IUsuariosService, UsuariosService>();
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -35,6 +38,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 app.UseHttpsRedirection();
 
